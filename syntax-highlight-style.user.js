@@ -7,8 +7,8 @@
 // @match           http://syntaxhighlight.in/
 // @license         MIT
 // @homepageURL     http://amourspirit.github.io/Syntax-Highlight-Style/
-// @update          https://raw.githubusercontent.com/Amourspirit/master/Syntax-Highlight-Style/syntax-highlight-style.user.js
-// @downloadURL     https://raw.githubusercontent.com/Amourspirit/master/Syntax-Highlight-Style/syntax-highlight-style.user.js
+// @update          https://github.com/Amourspirit/Syntax-Highlight-Style/raw/master/syntax-highlight-style.user.js
+// @downloadURL     https://github.com/Amourspirit/Syntax-Highlight-Style/raw/master/syntax-highlight-style.user.js
 // @contributionURL http://amourspirit.github.io/Syntax-Highlight-Style/#donate
 // @grant           none
 // ==/UserScript==

@@ -6,7 +6,7 @@
 // @author          Paul Moss
 // @match           http://syntaxhighlight.in/
 // @license         MIT
-// @homepageURL     https://github.com/Amourspirit/Syntax-Highlight-Style/
+// @homepageURL     http://amourspirit.github.io/Syntax-Highlight-Style/
 // @update          https://raw.githubusercontent.com/Amourspirit/master/Syntax-Highlight-Style/syntax-highlight-style.user.js
 // @downloadURL     https://raw.githubusercontent.com/Amourspirit/master/Syntax-Highlight-Style/syntax-highlight-style.user.js
 // @contributionURL http://amourspirit.github.io/Syntax-Highlight-Style/#donate

@@ -9,7 +9,7 @@ While the css style are a nice lightweight way to format code it is sometimes
 usefull to have the code styled with all the styles inline. This is espically usefull
 if you want to format your code and copy it into a program such as [Evernote](https://evernote.com)
 
-To paste code directly into Evernote Web you might use [TinyMce For Evernote](https://github.com/Amourspirit/TinyMce-for-Evernote) userscript.
+To paste code directly into Evernote Web you might use [TinyMce For Evernote](http://amourspirit.github.io/TinyMce-for-Evernote/) userscript.
 
 Basic useful feature list:
 

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Syntax-Highlight-Style
 // @namespace       https://github.com/Amourspirit/Syntax-Highlight-Style
-// @version         1.1.1
+// @version         1.1.2
 // @description     Adds extra code highlighting frormating options ot syntaxhighlight.in
 // @author          Paul Moss
 // @match           http://syntaxhighlight.in/
@@ -714,7 +714,6 @@ sthl.toTable = function(el, includeNum, tableClass) {
                 }
                 if (boxBg) {
                     $cellNum.css({
-                        background: $li.css('background'),
                         backgroundColor: $li.css('background-color')
                     });
                 }
@@ -808,7 +807,6 @@ sthl.toTable = function(el, includeNum, tableClass) {
             }
             if (boxBg) {
                 $cellMain.css({
-                    background: $li.css('background'),
                     backgroundColor: $li.css('background-color')
                 });
             }

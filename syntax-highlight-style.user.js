@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Syntax-Highlight-Style
 // @namespace       https://github.com/Amourspirit/Syntax-Highlight-Style
-// @version         1.1
+// @version         1.1.1
 // @description     Adds extra code highlighting frormating options ot syntaxhighlight.in
 // @author          Paul Moss
 // @match           http://syntaxhighlight.in/
@@ -680,7 +680,10 @@ sthl.toTable = function(el, includeNum, tableClass) {
         if (includeNum) {
             var $cellNum = $('<td/>').css({
                 paddingLeft: '5px',
-                width: '5%'
+                width: '35px',
+                textAlign: 'right',
+                whiteSpace: 'nowrap',
+                paddingRight: '5px'
             });
             if (box) {
                 $cellNum.css({
@@ -716,7 +719,7 @@ sthl.toTable = function(el, includeNum, tableClass) {
                     });
                 }
             }
-            $cellNum.html(BIGBYTE.STRING.pad(count, 2));
+            $cellNum.html(BIGBYTE.STRING.pad(count, 2) + '.');
             $row.append($cellNum);
 
         }
@@ -732,7 +735,7 @@ sthl.toTable = function(el, includeNum, tableClass) {
         });
         if (includeNum) {
             $cellMain.css({
-                width: '95%'
+                width: '100%'
             });
         } else {
             $cellMain.css({
@@ -810,9 +813,6 @@ sthl.toTable = function(el, includeNum, tableClass) {
                 });
             }
         }
-
-
-
         $cellMain.html($(this).html());
         $row.append($cellMain);
         $tbl.append($row);

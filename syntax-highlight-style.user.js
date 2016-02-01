@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Syntax-Highlight-Style
 // @namespace       https://github.com/Amourspirit/Syntax-Highlight-Style
-// @version         1.0
+// @version         1.1
 // @description     Adds extra code highlighting frormating options ot syntaxhighlight.in
 // @author          Paul Moss
 // @match           http://syntaxhighlight.in/
@@ -293,7 +293,6 @@ sthl.ns = 'BIGBYTE.USERSCRIPT.STHL';
 sthl.toggleButtons = function(enabled, forceRedraw) {
     enabled = (typeof(enabled) == 'undefined') ? false : enabled;
     forceRedraw = (typeof(forceRedraw) == 'undefined') ? false : forceRedraw;
-    //$('#parentOfElementToBeRedrawn').hide().show(0);
     var $ = jQuery;
     if (enabled) {
         $('#gmconvert').attr("disabled", false);
@@ -509,7 +508,6 @@ sthl.init = function(pluginSrc) {
         this.addScript('clipboard', '//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.5/clipboard.min.js', 'linkedjs', 'Clipboard');
     }
     this.addScript('icons-css', '//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css', 'csslink');
-    //this.addScript('code-css','shi/css/shi_default.min.css','csslink');
     // tiny mce 
     this.addScript('tinyMceJs', '//cdnjs.cloudflare.com/ajax/libs/tinymce/' + tinyMceVer + '/tinymce.min.js', 'linkedjs', 'tinyMCE');
     this.addScript('tinyMceCss', '//cdnjs.cloudflare.com/ajax/libs/tinymce/' + tinyMceVer + '/skins/lightgray/skin.min.css', 'csslink');
@@ -955,7 +953,6 @@ sthl.clipboardInit = function() {
         console.info('Action:', e.action);
         //console.info('Text:', e.text);
         console.info('Trigger:', e.trigger);
-        //e.clearSelection();
         alert('Data as been copied to the clipboard');
     });
 
@@ -967,9 +964,7 @@ sthl.clipboardInit = function() {
 
     clipboardTbl.on('success', function(e) {
         console.info('Action:', e.action);
-        //console.info('Text:', e.text);
         console.info('Trigger:', e.trigger);
-        //e.clearSelection();
         alert('Data as been copied to the clipboard');
     });
 
@@ -989,7 +984,6 @@ sthl.reHighlight = function() {
         $(".doneButton").attr("disabled", true);
         return false;
     }
-    //$("#intro:visible").slideToggle();
     $("#theWholeEnchilada").html('<pre class="shi_pre"></pre>');
     $("#theWholeEnchilada .shi_pre").text($("#dropZone").val());
     languageSelected = $("#language_selected option:selected").val();
@@ -1115,20 +1109,16 @@ sthl.ensurePlugins = function($) {
                 if (recurse) {
                     return $(this).find('*').each(function(index, value) {
                         try {
-                            //console.log('removeAttrib.find:',index, value);
                             if (typeof(value) == 'undefined') {
                                 return;
                             }
-                            // console.log('recurse:', value);
                             $(value).removeAttr(attributeName);
                         } catch (e) {
                             // statements
-                            //console.log('error:', e, ' - this:', this, ' - index:',index, ' - value', value);
                             console.log('error:', e);
                         }
 
                     });
-                    //(this).children().removeAttrib(attributeName, recurse);
                 } else {
                     return $(this).removeAttr(attributeName);
                 }
@@ -1151,7 +1141,6 @@ sthl.ensureMakeCssInlineCodePlugin = function($) {
                 this.each(function(idx, el) {
                     var $this = $(el);
                     var tagName = $this.tagName(true);
-                    //console.log('tagname:', el.tagName, ' - color:', $this.css('color'));
                     if ($this.attr('class')) {
                         // if element has a class then set the styles
                         $this.css({
@@ -1470,16 +1459,10 @@ sthl.onAllScriptsLoaded = function(e) {
         lib.lightBoxAddCss();
         lib.writeLightBox();
         lib.createToggleButton(); // create the toggle button to toggle tinymce
-        //BIGBYTE.USERSCRIPT.CLIPBOARD.init();
         lib.TMCE.init();
 
         sthl.initLineNumbers($);
-        // add css for foundation icons
-        // var bdoc = BIGBYTE.USERSCRIPT.DOCUMENT;
-        //bdoc.addLink_Node('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css');
-        // add clipboard ability
-        // https://zenorocha.github.io/clipboard.js/
-        //bdoc.addJS_Node(null,'//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.5/clipboard.min.js');
+
         $('.gmclose').click(function() {
             $.event.trigger({
                 type: "tinymceCancel",
@@ -1609,11 +1592,6 @@ sthl.onTinymceSave = function(e) {
         //console.log('Tiny Mce save was triggered');
         BIGBYTE.USERSCRIPT.STHL.lightBoxReset();
         var libTmce = BIGBYTE.USERSCRIPT.STHL.TMCE;
-        // tinymce seems to be causeing an issue with scrolling
-        // on fullsize when closes so toggle if needed
-        /*if (libTmce.fullscreen) {
-            tinyMCE.get('gminput').execCommand('mceFullScreen');
-        }*/
         if ($('body').hasClass('mce-fullscreen')) {
             $('body').removeClass('mce-fullscreen');
         }
@@ -1629,20 +1607,13 @@ sthl.onTinymceSave = function(e) {
 sthl.onTinymceCancel = function(e) {
     var $ = jQuery;
     if (e.tinyMceId == 'gminput') {
-        //console.log('Tiny Mce cancel was triggered');
         BIGBYTE.USERSCRIPT.STHL.lightBoxReset();
         tinymce.get('gminput').setContent(''); // clean up tinymce
         var libTmce = BIGBYTE.USERSCRIPT.STHL.TMCE;
-        // tinymce seems to be causeing an issue with scrolling
-        // on fullsize when closes so toggle if needed
-        /* if (libTmce.fullscreen) {
-            tinyMCE.get('gminput').execCommand('mceFullScreen');
-        }*/
         if ($('body').hasClass('mce-fullscreen')) {
             $('body').removeClass('mce-fullscreen');
         }
         $(document).enableScroll('html, body');
-        // $('body').animate({ scrollTop: this.windowScrollPos}, 'slow');
         $('body').scrollTop(this.windowScrollPos);
     }
 
@@ -1681,9 +1652,9 @@ if (typeof(tmce.init) == 'undefined') {
         var id = 'gminput';
         tinyMCE.init({
             selector: 'textarea#' + id,
+            visual: false, // turn off visual aids by default
             //entity_encoding: 'named',
             //entities: '160,nbsp',
-            //init_instance_callback: "BIGBYTE.USERSCRIPT.STHL.TMCE.callback",
             init_instance_callback: function() {
                 jQuery('.mce-i-mysave').addClass('fi-save').css({
                     color: 'black'
@@ -1757,9 +1728,7 @@ if (typeof(tmce.initHtmlTocopy) == 'undefined') {
         var id = 'htmlToCopy'
         tinyMCE.init({
             selector: 'textarea#' + id,
-            //entity_encoding: 'named',
-            //entities: '160,nbsp',
-            //init_instance_callback: "BIGBYTE.USERSCRIPT.STHL.TMCE.callback",
+            visual: false, // turn off visual aids by default
             init_instance_callback: function() {
                 jQuery.event.trigger({
                     type: "tinymceInit",

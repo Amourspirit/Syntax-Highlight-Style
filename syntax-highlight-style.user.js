@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Syntax-Highlight-Style
 // @namespace       https://github.com/Amourspirit/Syntax-Highlight-Style
-// @version         1.1.2
+// @version         1.1.3
 // @description     Adds extra code highlighting frormating options ot syntaxhighlight.in
 // @author          Paul Moss
 // @match           http://syntaxhighlight.in/
@@ -1669,22 +1669,26 @@ if (typeof(tmce.init) == 'undefined') {
                 });
             },
             height: 260,
-            // extended_valid_elements : "span[!class]",
             inline: false,
             browser_spellcheck: true,
             plugins: "",
             menubar: "edit insert format view tools table",
             toolbar1: 'mysave myexit insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-            toolbar2: 'fullscreen print preview media | forecolor backcolor | insertdatetime table searchreplace code',
+            toolbar2: 'fullscreen print preview | forecolor backcolor | link insertdatetime table searchreplace code',
             external_plugins: {
                 'fullscreen': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/fullscreen/plugin.min.js',
                 'textcolor': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/textcolor/plugin.min.js',
+                'colorpicker': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/colorpicker/plugin.min.js',
                 'nonbreaking': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/nonbreaking/plugin.min.js',
                 'insertdatetime': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/insertdatetime/plugin.min.js',
                 'code': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/code/plugin.min.js',
                 'hr': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/hr/plugin.min.js',
                 'searchreplace': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/searchreplace/plugin.min.js',
-                'table': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/table/plugin.min.js'
+                'table': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/table/plugin.min.js',
+                'link' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/link/plugin.min.js',
+                'wordcount' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/wordcount/plugin.min.js',
+                'print' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/print/plugin.min.js',
+                'preview' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/preview/plugin.min.js'
             },
             //valid_elements: 'ol ul',
             //extended_valid_elements: 'ol[|class|style] ul[class|style]',
@@ -1736,29 +1740,32 @@ if (typeof(tmce.initHtmlTocopy) == 'undefined') {
                 });
             },
             height: 260,
-            // extended_valid_elements : "span[!class]",
+            content_css : '/shi/css/shi_default.min.css',
             inline: false,
             browser_spellcheck: true,
             plugins: "",
             menubar: "edit insert format view tools table",
             toolbar1: 'myexit insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-            toolbar2: 'fullscreen print preview media | forecolor backcolor | insertdatetime table searchreplace code',
+            toolbar2: 'fullscreen print preview | forecolor backcolor | insertdatetime table searchreplace code',
             external_plugins: {
                 'fullscreen': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/fullscreen/plugin.min.js',
                 'textcolor': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/textcolor/plugin.min.js',
+                'colorpicker': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/colorpicker/plugin.min.js',
                 'nonbreaking': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/nonbreaking/plugin.min.js',
                 'insertdatetime': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/insertdatetime/plugin.min.js',
                 'code': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/code/plugin.min.js',
                 'hr': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/hr/plugin.min.js',
                 'searchreplace': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/searchreplace/plugin.min.js',
-                'table': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/table/plugin.min.js'
+                'table': 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/table/plugin.min.js',
+                'wordcount' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/wordcount/plugin.min.js',
+                'print' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/print/plugin.min.js',
+                'preview' : 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/' + ver + '/plugins/preview/plugin.min.js'
             },
             //theme : "advanced",
             theme_advanced_toolbar_location: "top",
             theme_advanced_toolbar_align: "left",
             theme_advanced_statusbar_location: "bottom",
             theme_advanced_resizing: true,
-            content_css: 'shi/css/shi_default.min.css',
             setup: function(ed) {
                 // Add a custom button
                 ed.on('FullscreenStateChanged', function(e) {
